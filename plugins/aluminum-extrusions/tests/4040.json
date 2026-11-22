@@ -1,0 +1,1 @@
+{"entry": "extrusion", "params": {"profile": "4040", "length": 100}, "expect": {"model": {"body_count": 1}}}

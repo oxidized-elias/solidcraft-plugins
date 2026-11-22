@@ -1,0 +1,1 @@
+{"entry":"insert","params":{"size":"M7"},"expect":{"error":"invalid_input"}}

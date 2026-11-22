@@ -1,0 +1,1 @@
+{"entry": "insert", "params": {"size": "M6", "variant": "standard"}, "expect": {"reply": {"result": {"size": "M6", "length_mm": 12.7}}, "model": {"body_count": 1}}}

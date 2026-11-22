@@ -1,0 +1,1 @@
+{"entry": "insert", "params": {"size": "M3", "variant": "voron"}, "expect": {"reply": {"result": {"size": "M3", "length_mm": 4}}, "model": {"body_count": 1}}}

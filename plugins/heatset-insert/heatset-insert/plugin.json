@@ -1,0 +1,91 @@
+{
+  "id": "heatset-insert",
+  "name": "Heat Set Inserts",
+  "version": "0.6.0",
+  "description": "Insert CNC Kitchen STEP models, with a generated M3.5 fallback.",
+  "capabilities": [
+    "commands@0.2"
+  ],
+  "runtime": {
+    "module": "heatset-insert.wasm",
+    "commands": [
+      "solid.cylinder",
+      "solid.torus",
+      "solid.thread",
+      "solid.scale",
+      "component.from_bodies",
+      "component.list",
+      "joint.create",
+      "timeline.add",
+      "inspect.measure"
+    ],
+    "entries": [
+      {
+        "name": "insert",
+        "effect": "edit",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "flip": {
+              "type": "boolean",
+              "title": "Flip insert end",
+              "description": "Swap the insert's ends while keeping it seated in the selected hole.",
+              "default": false
+            },
+            "hole": {
+              "type": "array",
+              "title": "Holes (optional)",
+              "description": "Select each cylindrical wall near the end where an insert should sit. The holes must be in components.",
+              "items": { "type": "object" },
+              "x-solidcraft-selection": { "version": 1, "accept": ["face"] }
+            },
+            "size": {
+              "type": "string",
+              "title": "Thread size",
+              "enum": [
+                "M2",
+                "M2.5",
+                "M3",
+                "M3.5",
+                "M4",
+                "M5",
+                "M6",
+                "M8"
+              ],
+              "default": "M3"
+            },
+            "length": {
+              "type": "number",
+              "title": "Length (0 = original; scaling changes thread pitch)",
+              "unit": "mm",
+              "default": 0,
+              "minimum": 0
+            },
+            "variant": {
+              "type": "string",
+              "title": "Variant",
+              "enum": [
+                "standard",
+                "short",
+                "voron"
+              ],
+              "default": "standard"
+            }
+          },
+          "x-solidcraft-icon": "icons/insert.svg"
+        },
+        "slots": [
+          {
+            "kind": "ribbon",
+            "name": "Heat Set Inserts"
+          }
+        ]
+      }
+    ],
+    "limits": {
+      "fuel": 100000000000,
+      "memory_mib": 64,
+      "deadline_ms": 30000
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "aluminum-extrusions",
+  "name": "Aluminum Extrusions",
+  "version": "0.1.0",
+  "description": "Generate extrusions from the included profile library. Lengths are in millimeters.",
+  "capabilities": [
+    "commands@0.2"
+  ],
+  "runtime": {
+    "module": "aluminum-extrusions.wasm",
+    "commands": [
+      "component.list",
+      "sketch.create",
+      "sketch.line",
+      "sketch.circle.center",
+      "sketch.finish",
+      "solid.extrude",
+      "solid.fillet"
+    ],
+    "entries": [
+      {
+        "name": "extrusion",
+        "effect": "edit",
+        "input_schema": {
+          "type": "object",
+          "x-solidcraft-icon": "icons/extrusion.svg",
+          "required": [
+            "profile",
+            "length"
+          ],
+          "properties": {
+            "profile": {
+              "type": "string",
+              "title": "Profile",
+              "default": "1515",
+              "oneOf": [
+                {
+                  "const": "1515",
+                  "title": "1515"
+                },
+                {
+                  "const": "2020",
+                  "title": "2020"
+                },
+                {
+                  "const": "2020Cchannel",
+                  "title": "2020Cchannel"
+                },
+                {
+                  "const": "2040",
+                  "title": "2040"
+                },
+                {
+                  "const": "4040 Rounded",
+                  "title": "4040 Rounded"
+                },
+                {
+                  "const": "4040",
+                  "title": "4040"
+                }
+              ]
+            },
+            "length": {
+              "type": "number",
+              "title": "Length (mm)",
+              "default": 100,
+              "exclusiveMinimum": 0
+            }
+          }
+        },
+        "slots": [
+          {
+            "kind": "ribbon",
+            "name": "Extrusions"
+          }
+        ]
+      }
+    ],
+    "limits": {
+      "fuel": 1000000000,
+      "memory_mib": 64,
+      "deadline_ms": 30000
+    }
+  }
+}
