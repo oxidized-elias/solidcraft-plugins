@@ -9,7 +9,7 @@ Source and build scripts for SolidCraft plugins:
 
 Install Python 3, Rust and Cargo, the Rust `wasm32-unknown-unknown` target, `wasm-tools`, and `zip`. Aluminum Extrusions also requires `solidcraft-cli` on `PATH`, or its standard per-user Linux Flatpak installation. Install the Rust target with `rustup target add wasm32-unknown-unknown`.
 
-Once this repository is published, clone and run the interactive installer in one command:
+Clone the repository and run the interactive installer in one command:
 
 ```sh
 git clone https://github.com/oxidized-elias/solidcraft-plugins.git && ./solidcraft-plugins/install.sh
@@ -34,4 +34,4 @@ Each plugin has its own source, tests, and build script under `plugins/`. To add
 
 ## Redistribution
 
-The plugins include third-party assets with separate attribution and uncertain redistribution terms. Review each plugin's README and obtain any necessary permissions before publishing this repository. No license has been selected for the project code.
+The plugins include third-party assets with separate attribution and uncertain redistribution terms. Review each plugin's README and obtain any necessary permissions before redistributing them. No license has been selected for the project code.
