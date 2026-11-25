@@ -1,6 +1,6 @@
 # SolidCraft Plugins
 
-Source and build scripts for SolidCraft plugins:
+This repository contains the source and build scripts for three SolidCraft plugins:
 
 - [Heat-Set Insert Generator](plugins/heatset-insert/README.md)
 - [Aluminum Extrusions](plugins/aluminum-extrusions/README.md)
@@ -8,7 +8,7 @@ Source and build scripts for SolidCraft plugins:
 
 ## Build and install
 
-Install Python 3, Rust and Cargo, the Rust `wasm32-unknown-unknown` target, `wasm-tools`, and `zip`. Aluminum Extrusions and Linear Rails also require `solidcraft-cli` on `PATH`, or its standard per-user Linux Flatpak installation. Install the Rust target with `rustup target add wasm32-unknown-unknown`.
+You need Python 3, Rust and Cargo, `wasm-tools`, and `zip` to build the plugins. Aluminum Extrusions and Linear Rails also need `solidcraft-cli` on `PATH` or in its standard per-user Linux Flatpak location. Install the Rust `wasm32-unknown-unknown` target with `rustup target add wasm32-unknown-unknown`.
 
 Clone the repository and run the interactive installer in one command:
 
@@ -16,13 +16,13 @@ Clone the repository and run the interactive installer in one command:
 git clone https://github.com/oxidized-elias/solidcraft-plugins.git && ./solidcraft-plugins/install.sh
 ```
 
-For unattended use, pass the plugin name on the same command:
+To build a plugin without the interactive menu, pass its name:
 
 ```sh
 git clone https://github.com/oxidized-elias/solidcraft-plugins.git && ./solidcraft-plugins/install.sh heatset-insert
 ```
 
-Use `aluminum-extrusions` or `linear-rails` to select another plugin. These commands create a `solidcraft-plugins` directory in the current directory and require it not to exist already. From an existing checkout, run:
+Use `aluminum-extrusions` or `linear-rails` to choose another plugin. The clone commands create a `solidcraft-plugins` directory, so that directory must not already exist. From an existing checkout, run:
 
 ```sh
 ./install.sh heatset-insert
@@ -30,10 +30,14 @@ Use `aluminum-extrusions` or `linear-rails` to select another plugin. These comm
 ./install.sh linear-rails
 ```
 
-The command prints the ZIP location under `plugins/<plugin>/dist/`. In SolidCraft, choose **Plugins → Install plugin…** and select that ZIP. Run `./install.sh` without arguments for the interactive menu. The installer builds from source; it does not install software prerequisites.
+The installer prints the ZIP location under `plugins/<plugin>/dist/`. In SolidCraft, choose **Plugins → Install plugin…** and select the ZIP. Run `./install.sh` without arguments to use the interactive menu. The installer builds from source and does not install prerequisites.
 
-Each plugin has its own source, tests, and build script under `plugins/`. To add a plugin, give it a directory there with a `build.sh` that creates an installable package; the shared installer discovers it automatically.
+Each directory under `plugins/` contains a plugin’s source, tests, and build script. To add a plugin, create a directory there with a `build.sh` that produces an installable package. The shared installer discovers it automatically.
+
+## Releases
+
+Push a version tag such as `v0.1.0` to build the plugins and create a GitHub release with their installable ZIPs. Before publishing, the workflow runs the installer and SolidCraft host checks using SolidCraft CLI 0.45.0. Update the workflow if the plugins require a newer host, and review the redistribution terms below before publishing.
 
 ## Redistribution
 
-The plugins include third-party assets with separate attribution and uncertain redistribution terms. Review each plugin's README and obtain any necessary permissions before redistributing them. No license has been selected for the project code.
+The plugins include third-party assets with separate attribution and unconfirmed redistribution terms. Read each plugin's README and obtain any necessary permissions before redistributing it. No license has been selected for the project code.

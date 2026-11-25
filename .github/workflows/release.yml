@@ -1,0 +1,43 @@
+name: Build and release plugins
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Rust target and wasm-tools
+        run: |
+          rustup update stable --no-self-update
+          rustup default stable
+          rustup target add wasm32-unknown-unknown
+          cargo install wasm-tools --version 1.263.0 --locked
+      - name: Install SolidCraft CLI
+        run: |
+          curl --fail --location --retry 3 \
+            https://github.com/tangency-labs/solidcraft/releases/download/v0.45.0/solidcraft-linux-x86_64.deb \
+            --output "$RUNNER_TEMP/solidcraft.deb"
+          dpkg-deb --extract "$RUNNER_TEMP/solidcraft.deb" "$RUNNER_TEMP/solidcraft"
+          echo "$RUNNER_TEMP/solidcraft/usr/bin" >> "$GITHUB_PATH"
+      - name: Build and test plugins
+        run: |
+          bash tests/test-installer.sh
+          for build in plugins/*/build.sh; do
+            ./install.sh "$(basename "$(dirname "$build")")"
+          done
+          cp -r plugins/heatset-insert/heatset-insert/tests plugins/heatset-insert/dist/heatset-insert/
+          solidcraft-cli plugin check plugins/heatset-insert/dist/heatset-insert.zip
+          solidcraft-cli plugin test plugins/heatset-insert/dist/heatset-insert --require-cases
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" plugins/*/dist/*.zip \
+            --verify-tag --generate-notes
