@@ -4,6 +4,8 @@ Create a SolidCraft extrusion at a length you choose in millimeters. The include
 
 ## Install and use
 
+Download `aluminum-extrusions.zip` from [GitHub Releases](https://github.com/oxidized-elias/solidcraft-plugins/releases) and select it in SolidCraft under **Plugins → Install plugin…**. To build it yourself:
+
 From the repository root, run `./install.sh aluminum-extrusions`. In SolidCraft, choose **Plugins → Install plugin…** and select `dist/aluminum-extrusions.zip` from this plugin’s directory. Open a design, choose **Extrusions** on the ribbon, select a profile and enter a positive length.
 
 The plugin creates a sketch and an extrusion, along with any fillets in the source profile. Use Undo to remove the insertion, or edit the extrusion feature to change its length.

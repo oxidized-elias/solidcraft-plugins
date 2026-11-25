@@ -38,16 +38,14 @@ jobs:
           cp -r plugins/heatset-insert/heatset-insert/tests plugins/heatset-insert/dist/heatset-insert/
           solidcraft-cli plugin check plugins/heatset-insert/dist/heatset-insert.zip
           solidcraft-cli plugin test plugins/heatset-insert/dist/heatset-insert --require-cases
-      - name: Upload plugin ZIPs
-        uses: actions/upload-artifact@v4
-        with:
-          name: solidcraft-plugins
-          path: plugins/*/dist/*.zip
-          if-no-files-found: error
       - name: Publish release
-        if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release create "$GITHUB_REF_NAME" plugins/*/dist/*.zip \
-            --verify-tag --generate-notes
+          if [[ "$GITHUB_REF_TYPE" == tag && "$GITHUB_REF_NAME" == v* ]]; then
+            gh release create "$GITHUB_REF_NAME" plugins/*/dist/*.zip \
+              --verify-tag --generate-notes
+          else
+            gh release create "build-$GITHUB_SHA" plugins/*/dist/*.zip \
+              --target "$GITHUB_SHA" --title "Build ${GITHUB_SHA:0:7}" --generate-notes
+          fi

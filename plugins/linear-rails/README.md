@@ -2,6 +2,9 @@
 
 Create an MGN7, MGN9, MGN12 or MGN15 rail at a length you choose, with an optional C (short) or H (long) carriage block. Lengths are in millimeters and are limited to 2000 mm. The block sits at the center of the rail, which must be at least as long as the block.
 
+
+Download `linear-rails.zip` from [GitHub Releases](https://github.com/oxidized-elias/solidcraft-plugins/releases) and select it in SolidCraft under **Plugins → Install plugin…**. To build it yourself:
+
 From the repository root, run `./install.sh linear-rails`, then install `dist/linear-rails.zip` from this directory using **Plugins → Install plugin…** in SolidCraft. Open a design and select **Linear Rails** on the ribbon.
 
 To place the rail on a surface, select one planar face under **Mounting surface**. The bottom of the rail starts at the selected point and faces outward. Leave the field empty to create the rail at the origin. SolidCraft chooses the direction along the surface; you can reposition or rotate the component afterward.

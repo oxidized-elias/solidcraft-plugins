@@ -8,6 +8,8 @@ The STEP models are **Threaded Inserts / Heat Set Inserts by CNC Kitchen**, by C
 
 ## Install and use
 
+Download `heatset-insert.zip` from [GitHub Releases](https://github.com/oxidized-elias/solidcraft-plugins/releases) and select it in SolidCraft under **Plugins → Install plugin…**. To build it yourself:
+
 1. Build the ZIP with `./install.sh heatset-insert` from the repository root. In SolidCraft choose **Plugins → Install plugin…** and select `dist/heatset-insert.zip` in this plugin's directory. The STEP models are embedded in the plugin, so you do not need a library folder or file access grant.
 2. Run **Heat Set Inserts → insert** from the Plugins menu or the Plugins ribbon tab.
 3. Select the size and variant. Leave length at **0** for the source length, or enter a length in mm to scale it along Z. To place inserts in holes, select one or more cylindrical walls near the ends where the inserts should sit. Each hole must belong to a component; use **Create Components from Bodies** on its body if necessary. The plugin creates an insert component and rigid joint for each selected hole, using the same settings for all. Enable **Flip insert end** to swap which end faces out while keeping it seated. If you do not select a hole, the plugin places one insert at the origin.
