@@ -1,0 +1,15 @@
+# Linear Rails for SolidCraft
+
+Generate an MGN7, MGN9, MGN12 or MGN15 rail at a chosen length in millimeters, with an optional C (short) or H (long) carriage block. The block is centered on the rail; the rail must be at least as long as the selected block. The rail length is limited to 2000 mm.
+
+From the repository root, run `./install.sh linear-rails`, then install `dist/linear-rails.zip` from this directory using **Plugins → Install plugin…** in SolidCraft. Open a design and select **Linear Rails** on the ribbon. Optionally select one planar face under **Mounting surface**; the bottom of the rail starts at the selected point and faces outward from the surface. Leave it empty to create the rail at the origin. The orientation along the surface is chosen by SolidCraft; reposition or rotate the component afterward if needed. To center the rail between two straight parallel body edges, select them under **Center between edges**. The rail runs parallel to the edges and its length is centered at the midpoint between the edges’ midpoints. Pick away from edge endpoints. Select a mounting surface as well to choose its outward side; both edges must lie in that surface plane. Without a surface, the plugin chooses a consistent side of the plane defined by the edges. The placement is fixed and does not create a joint that follows later changes to the surface or edges. The rail and block bodies are contained in one component. Their editable construction features are collected in one expandable history group.
+
+The rail section, including its side grooves and chamfers, follows the straight-edged end section of the supplied designer's STEP model for each size. Mounting holes are centered along the length at nominal pitch. The block uses the supplied STEP geometry without scaling. The source models approximate the raceway with straight edges; they are not a specification for bearing fit or manufacturing. Verify dimensions against your manufacturer's drawings.
+
+[HIWIN's linear-guideway catalog](https://hiwin.co.uk/wp-content/uploads/2017/06/Linear-Guideways.pdf) shows the MGN rail section and nominal rail and mounting dimensions but does not specify the groove contour in sufficient detail to reconstruct it. The groove geometry here is taken from the supplied reference models, not inferred from that catalog.
+
+## Attribution and licensing
+
+The MGN7, MGN9, MGN12 and MGN15 reference assemblies and carriage block geometry were designed by [Dr. Balls](https://grabcad.com/dr.balls-2). Thank you for sharing these models. Their redistribution terms have not been established; obtain any necessary permission before redistributing this plugin or its derived models.
+
+`wit/plugin.wit` is the SolidCraft plugin interface, copied from [SolidCraft](https://github.com/tangency-labs/solidcraft/blob/e8689fd86eac15513db4d91e8b764bf036884d6b/crates/craft-plugin/wit/plugin.wit). It is available under MIT or Apache-2.0; the MIT notice is included in `LICENSES/SolidCraft-MIT.txt`. No license has been selected for the rest of this project.

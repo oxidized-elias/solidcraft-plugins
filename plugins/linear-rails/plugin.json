@@ -1,0 +1,121 @@
+{
+  "id": "linear-rails",
+  "name": "Linear Rails",
+  "version": "0.1.0",
+  "description": "Generate MGN linear rails and optional blocks. Lengths are in millimeters.",
+  "capabilities": [
+    "commands@0.2"
+  ],
+  "runtime": {
+    "module": "linear-rails.wasm",
+    "commands": [
+      "inspect.measure",
+      "component.create",
+      "component.activate",
+      "sketch.create",
+      "sketch.line",
+      "sketch.finish",
+      "solid.extrude",
+      "solid.cylinder",
+      "timeline.add",
+      "solid.move",
+      "timeline.group",
+      "component.move_features",
+      "occurrence.align",
+      "model.edges",
+      "occurrence.move"
+    ],
+    "entries": [
+      {
+        "name": "rail",
+        "effect": "edit",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "type",
+            "length"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "title": "Rail type",
+              "default": "MGN12",
+              "enum": [
+                "MGN7",
+                "MGN9",
+                "MGN12",
+                "MGN15"
+              ]
+            },
+            "length": {
+              "type": "number",
+              "title": "Length (mm)",
+              "default": 100,
+              "minimum": 4,
+              "maximum": 2000
+            },
+            "block": {
+              "type": "string",
+              "title": "Block",
+              "default": "none",
+              "oneOf": [
+                {
+                  "const": "none",
+                  "title": "None"
+                },
+                {
+                  "const": "C",
+                  "title": "C (short)"
+                },
+                {
+                  "const": "H",
+                  "title": "H (long)"
+                }
+              ]
+            },
+            "surface": {
+              "type": "array",
+              "title": "Mounting surface (optional)",
+              "description": "Select one planar face. The rail starts at the selected point and follows the face orientation.",
+              "items": {
+                "type": "object"
+              },
+              "x-solidcraft-selection": {
+                "version": 1,
+                "accept": [
+                  "face"
+                ]
+              }
+            },
+            "lines": {
+              "type": "array",
+              "title": "Center between edges (optional)",
+              "description": "Select two straight parallel edges to center and orient the rail.",
+              "items": {
+                "type": "object"
+              },
+              "x-solidcraft-selection": {
+                "version": 1,
+                "accept": [
+                  "edge"
+                ]
+              }
+            }
+          },
+          "x-solidcraft-icon": "icons/rail.svg"
+        },
+        "slots": [
+          {
+            "kind": "ribbon",
+            "name": "Linear Rails"
+          }
+        ]
+      }
+    ],
+    "limits": {
+      "fuel": 10000000000,
+      "memory_mib": 128,
+      "deadline_ms": 30000
+    }
+  }
+}
