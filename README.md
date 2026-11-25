@@ -36,7 +36,9 @@ Each directory under `plugins/` contains a plugin’s source, tests, and build s
 
 ## Releases
 
-Push a version tag such as `v0.1.0` to build the plugins and create a GitHub release with their installable ZIPs. Before publishing, the workflow runs the installer and SolidCraft host checks using SolidCraft CLI 0.45.0. Update the workflow if the plugins require a newer host, and review the redistribution terms below before publishing.
+Push to `main` or run the workflow manually from the Actions tab to build and test the plugins. The resulting ZIPs are available as a workflow artifact. Push a version tag such as `v0.1.0` to also create a GitHub release with the ZIPs attached.
+
+The workflow uses SolidCraft CLI 0.45.0 for its host checks. Update the workflow if the plugins require a newer host, and review the redistribution terms below before publishing.
 
 ## Redistribution
 
