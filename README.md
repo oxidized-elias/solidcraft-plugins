@@ -1,10 +1,11 @@
 # SolidCraft Plugins
 
-This repository contains the source and build scripts for three SolidCraft plugins:
+This repository contains the source and build scripts for SolidCraft plugins:
 
 - [Heat-Set Insert Generator](plugins/heatset-insert/README.md)
 - [Aluminum Extrusions](plugins/aluminum-extrusions/README.md)
 - [Linear Rails](plugins/linear-rails/README.md)
+- [Breakaway Supports](plugins/breakaway-supports/README.md)
 
 ## Install a release
 
@@ -12,7 +13,7 @@ Download the ZIP for the plugin you want from [GitHub Releases](https://github.c
 
 ## Build and install
 
-You need Python 3, Rust and Cargo, `wasm-tools`, and `zip` to build the plugins. Aluminum Extrusions and Linear Rails also need `solidcraft-cli` on `PATH` or in its standard per-user Linux Flatpak location. Install the Rust `wasm32-unknown-unknown` target with `rustup target add wasm32-unknown-unknown`.
+You need Python 3, Rust and Cargo, `wasm-tools`, and `zip` to build the plugins. Aluminum Extrusions, Linear Rails, and Breakaway Supports also need `solidcraft-cli` on `PATH` or in its standard per-user Linux Flatpak location. Install the Rust `wasm32-unknown-unknown` target with `rustup target add wasm32-unknown-unknown`.
 
 Clone the repository and run the interactive installer in one command:
 
@@ -26,12 +27,13 @@ To build a plugin without the interactive menu, pass its name:
 git clone https://github.com/oxidized-elias/solidcraft-plugins.git && ./solidcraft-plugins/install.sh heatset-insert
 ```
 
-Use `aluminum-extrusions` or `linear-rails` to choose another plugin. The clone commands create a `solidcraft-plugins` directory, so that directory must not already exist. From an existing checkout, run:
+Use `aluminum-extrusions`, `linear-rails`, or `breakaway-supports` to choose another plugin. The clone commands create a `solidcraft-plugins` directory, so that directory must not already exist. From an existing checkout, run:
 
 ```sh
 ./install.sh heatset-insert
 ./install.sh aluminum-extrusions
 ./install.sh linear-rails
+./install.sh breakaway-supports
 ```
 
 The installer prints the ZIP location under `plugins/<plugin>/dist/`. In SolidCraft, choose **Plugins → Install plugin…** and select the ZIP. Run `./install.sh` without arguments to use the interactive menu. The installer builds from source and does not install prerequisites.
