@@ -1,0 +1,130 @@
+{
+  "id": "breakaway-supports",
+  "name": "Breakaway Supports",
+  "version": "0.1.2",
+  "description": "Generate one hollow support with dotted contacts under level faces.",
+  "capabilities": [
+    "commands@0.2"
+  ],
+  "runtime": {
+    "module": "breakaway-supports.wasm",
+    "commands": [
+      "inspect.measure",
+      "view.pick",
+      "solid.cylinder",
+      "solid.box",
+      "sketch.create",
+      "sketch.line",
+      "sketch.finish",
+      "solid.extrude",
+      "timeline.group",
+      "solid.combine",
+      "sketch.circle.center",
+      "model.faces",
+      "solid.cone",
+      "solid.move"
+    ],
+    "entries": [
+      {
+        "name": "generate",
+        "effect": "edit",
+        "input_schema": {
+          "type": "object",
+          "required": [
+            "faces"
+          ],
+          "properties": {
+            "faces": {
+              "type": "array",
+              "title": "Faces to support",
+              "description": "Select one or more downward-facing horizontal faces. All selected faces must be at the same height.",
+              "items": {
+                "type": "object"
+              },
+              "x-solidcraft-selection": {
+                "version": 1,
+                "accept": [
+                  "face"
+                ]
+              }
+            },
+            "on_part": {
+              "type": "boolean",
+              "title": "Allow supports to start on the part",
+              "default": false,
+              "description": "Allow the support to start on a level surface of the model. When off, it starts at the build plate."
+            },
+            "spacing": {
+              "type": "number",
+              "title": "Contact spacing (mm)",
+              "default": 5,
+              "minimum": 2,
+              "maximum": 50,
+              "description": "Distance between contact dots. Smaller values add more contacts and can support smaller faces, but may make removal harder."
+            },
+            "diameter": {
+              "type": "number",
+              "title": "Footprint margin (mm)",
+              "default": 1,
+              "minimum": 0.4,
+              "maximum": 5,
+              "description": "Total extra width added to the support footprint around the outer contact centers. Each side extends by half this value."
+            },
+            "wall_thickness": {
+              "type": "number",
+              "title": "Shell wall thickness (mm)",
+              "default": 0.8,
+              "minimum": 0.4,
+              "maximum": 5,
+              "description": "Thickness of the hollow support’s side walls. The footprint must be wider than twice this value."
+            },
+            "bridge_thickness": {
+              "type": "number",
+              "title": "Minimum sacrificial top thickness (mm)",
+              "default": 1,
+              "minimum": 1,
+              "maximum": 10,
+              "description": "Thickness of the solid roof below the contact dots. For example, 1 mm gives five layers at a 0.2 mm layer height."
+            },
+            "dot_diameter": {
+              "type": "number",
+              "title": "Contact dot diameter (mm)",
+              "default": 0.6,
+              "minimum": 0.2,
+              "maximum": 5,
+              "description": "Diameter of each small contact between support and part. Smaller dots may break away more easily but provide less support."
+            },
+            "gap": {
+              "type": "number",
+              "title": "Interface layer height (mm)",
+              "default": 0.2,
+              "minimum": 0.05,
+              "maximum": 1,
+              "description": "Height of the contact dots between the support and the part. Set this to your slicer layer height; it is not an empty gap."
+            },
+            "side_clearance": {
+              "type": "number",
+              "title": "Side clearance (mm)",
+              "default": 1,
+              "minimum": 0.2,
+              "maximum": 5,
+              "description": "Approximate space around model walls when the support wraps around a part."
+            }
+          },
+          "x-solidcraft-icon": "icons/support.svg"
+        },
+        "slots": [
+          {
+            "kind": "ribbon",
+            "name": "Breakaway Supports"
+          }
+        ]
+      }
+    ],
+    "limits": {
+      "fuel": 10000000000,
+      "memory_mib": 128,
+      "deadline_ms": 30000
+    }
+  }
+}
