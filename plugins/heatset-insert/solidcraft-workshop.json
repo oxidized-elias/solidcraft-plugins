@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "id": "heat-set-inserts",
+  "name": "Heat-Set Insert Generator",
+  "kind": "plugin",
+  "version": "1.0.0",
+  "licence": "MIT",
+  "min_app_version": "0.40.0",
+  "summary": "Generate pockets and bosses sized for heat-set threaded inserts.",
+  "category": "generators",
+  "tags": ["hardware", "inserts", "heat-set", "3d-printing"],
+  "permissions": ["commands:sketch"],
+  "files": [
+    { "asset": "heat-set-inserts-1.0.0.zip", "role": "package" }
+  ]
+}
