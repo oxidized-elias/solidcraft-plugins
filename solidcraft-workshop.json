@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "plugins": [
+    {
+      "id": "heatset-insert",
+      "name": "Heat Set Inserts",
+      "kind": "plugin",
+      "version": "0.6.0",
+      "licence": "NOASSERTION",
+      "min_app_version": "0.45.0",
+      "summary": "Insert heat-set threaded inserts into a SolidCraft design.",
+      "category": "components",
+      "tags": ["heat-set", "inserts", "fasteners"],
+      "permissions": [
+        "commands:component",
+        "commands:inspect",
+        "commands:joint",
+        "commands:solid",
+        "commands:timeline"
+      ],
+      "files": [{ "asset": "heatset-insert.zip", "role": "package" }]
+    },
+    {
+      "id": "aluminum-extrusions",
+      "name": "Aluminum Extrusions",
+      "kind": "plugin",
+      "version": "0.1.0",
+      "licence": "NOASSERTION",
+      "min_app_version": "0.45.0",
+      "summary": "Generate aluminum extrusions from the included profile library.",
+      "category": "generators",
+      "tags": ["extrusions", "profiles", "engineering"],
+      "permissions": ["commands:component", "commands:sketch", "commands:solid"],
+      "files": [{ "asset": "aluminum-extrusions.zip", "role": "package" }]
+    },
+    {
+      "id": "linear-rails",
+      "name": "Linear Rails",
+      "kind": "plugin",
+      "version": "0.1.0",
+      "licence": "NOASSERTION",
+      "min_app_version": "0.45.0",
+      "summary": "Generate MGN linear rails and optional blocks.",
+      "category": "components",
+      "tags": ["linear-rails", "motion", "engineering"],
+      "permissions": [
+        "commands:component",
+        "commands:inspect",
+        "commands:model",
+        "commands:occurrence",
+        "commands:sketch",
+        "commands:solid",
+        "commands:timeline"
+      ],
+      "files": [{ "asset": "linear-rails.zip", "role": "package" }]
+    },
+    {
+      "id": "breakaway-supports",
+      "name": "Breakaway Supports",
+      "kind": "plugin",
+      "version": "0.1.2",
+      "licence": "NOASSERTION",
+      "min_app_version": "0.45.0",
+      "summary": "Generate breakaway supports under level model faces.",
+      "category": "generators",
+      "tags": ["supports", "3d-printing", "fabrication"],
+      "permissions": [
+        "commands:inspect",
+        "commands:model",
+        "commands:sketch",
+        "commands:solid",
+        "commands:timeline",
+        "commands:view"
+      ],
+      "files": [{ "asset": "breakaway-supports.zip", "role": "package" }]
+    }
+  ]
+}
