@@ -11,10 +11,6 @@ This repository contains the source and build scripts for SolidCraft plugins:
 
 Download the ZIP for the plugin you want from [GitHub Releases](https://github.com/oxidized-elias/solidcraft-plugins/releases). Each plugin has its own ZIP; download that file directly and choose **Plugins → Install plugin…** in SolidCraft. The source-code archives on the release page are not plugin packages.
 
-## List in SolidCraft Workshop
-
-The root [solidcraft-workshop.json](solidcraft-workshop.json) has a separate metadata section and package asset for each plugin. In SolidCraft, open **List from GitHub**, enter `oxidized-elias/solidcraft-plugins`, and choose **Check repository**. The release must include the ZIP assets named in the matching plugin sections.
-
 ## Build and install
 
 You need Python 3, Rust and Cargo, `wasm-tools`, and `zip` to build the plugins. Aluminum Extrusions, Linear Rails, and Breakaway Supports also need `solidcraft-cli` on `PATH` or in its standard per-user Linux Flatpak location. Install the Rust `wasm32-unknown-unknown` target with `rustup target add wasm32-unknown-unknown`.
